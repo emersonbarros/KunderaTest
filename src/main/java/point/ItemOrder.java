@@ -19,7 +19,7 @@ public class ItemOrder {
 	@Column
 	private String description;
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idItemPrice")
 	private ItemPrice price;
 
@@ -45,6 +45,12 @@ public class ItemOrder {
 
 	public void setPrice(ItemPrice price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "ItemOrder [idItemOrder=" + idItemOrder + ", description="
+				+ description + ", price=" + price + "]";
 	}
 
 }

@@ -19,7 +19,7 @@ public class Order {
 	private String id;
 
 	@Column
-	private String name;
+	private String nameOrder;
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "idItemOrder")
@@ -33,12 +33,12 @@ public class Order {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameOrder() {
+		return nameOrder;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameOrder(String nameOrder) {
+		this.nameOrder = nameOrder;
 	}
 
 	public List<ItemOrder> getItems() {
@@ -49,5 +49,8 @@ public class Order {
 		this.items = items;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", name=" + nameOrder + ", items=" + items + "]";
+	}
 }

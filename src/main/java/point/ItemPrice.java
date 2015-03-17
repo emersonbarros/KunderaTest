@@ -44,4 +44,10 @@ public class ItemPrice {
 		this.currency = currency;
 	}
 
+	@Override
+	public String toString() {
+		return "ItemPrice [idItemPrice=" + idItemPrice + ", value=" + value
+				+ ", currency=" + currency + "]";
+	}
+
 }
