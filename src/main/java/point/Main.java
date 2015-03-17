@@ -1,13 +1,17 @@
 package point;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import point.vo.Item;
+import point.vo.Product;
+import point.vo.ProductOption;
+import point.vo.ProductOptionValue;
+import point.vo.ProductOptionValuePrice;
 
 public class Main {
 
@@ -20,57 +24,54 @@ public class Main {
 
 		em.getTransaction().begin();
 
+		Product p = new Product();
+		p.setIdProduct("1000");
+
+		Item item = new Item();
+		item.setIdItem("1001");
+		item.setImage("image");
+		item.setLongDescription("Long Description");
+		item.setName("Name");
+		item.setShortDescription("Short Description");
+		p.setItem(item);
 		
-		/*for (int i = 0; i < 1000; i++) {
-			Order p = new Order();
-			p.setId(UUID.randomUUID().toString());
-			List<ItemOrder> items = new ArrayList<ItemOrder>();
-			ItemOrder item = new ItemOrder();
-			item.setDescription("description " + i);
-			item.setIdItemOrder(UUID.randomUUID().toString());
-			ItemPrice price = new ItemPrice();
-			price.setIdItemPrice(UUID.randomUUID().toString());
-			price.setCurrency("Real");
-			price.setValue(new BigDecimal(1000*1/2.5));
-			item.setPrice(price);
-			items.add(item);
-			p.setItems(items);
-			em.persist(p);
-		}
-		*/
+		List<ProductOption> options = new ArrayList<ProductOption>();
+		ProductOption po = new ProductOption();
+		po.setIdProductOption("1003");
 		
-		Order p = new Order();
-		p.setId("1000");
-		p.setNameOrder("Order 1000");
-		
-		List<ItemOrder> items = new ArrayList<ItemOrder>();
-		ItemOrder item = new ItemOrder();
-		item.setDescription("description " + 100);
-		item.setIdItemOrder(UUID.randomUUID().toString());
-		
-		ItemPrice price = new ItemPrice();
-		price.setIdItemPrice(UUID.randomUUID().toString());
-		price.setCurrency("Real");
-		price.setValue(new BigDecimal(1000*1/2.5));
-		item.setPrice(price);
-		items.add(item);
-		p.setItems(items);
+		List<ProductOptionValue> optValues = new ArrayList<ProductOptionValue>();
+		ProductOptionValue optValue = new ProductOptionValue();
+		optValue.setIdProductOptionValue("1004");
+		optValue.setItem(item);
+		ProductOptionValuePrice optValuePrice = new ProductOptionValuePrice();
+		optValuePrice.setIdProductOptionValuePrice("1005");
+				
+		optValues.add(optValue);
+		po.setProductOptionValue(optValues);
+
+		options.add(po);
+		p.setOptions(options);
 		
 		em.persist(p);
-		
+		em.persist(optValuePrice);
+
 		em.getTransaction().commit();
 
-		Order o = em.find(Order.class, "1000");
+		Product o = em.find(Product.class, "1000");
 		System.out.println(o);
 		
-		/*Query q = em.createQuery("select o FROM Order o");
-		System.out.println("Total Orders: " + q.getResultList());
+		ProductOptionValuePrice povp = em.find(ProductOptionValuePrice.class, "1000");
+		System.out.println(povp);
 
-		q = em.createQuery("select o FROM Order o ");
-		List<Order> results = q.getResultList();
-		for (Order p1 : results) {
-			System.out.println(p1);
-		}*/
+
+		/*
+		 * Query q = em.createQuery("select o FROM Order o");
+		 * System.out.println("Total Orders: " + q.getResultList());
+		 * 
+		 * q = em.createQuery("select o FROM Order o "); List<Order> results =
+		 * q.getResultList(); for (Order p1 : results) { System.out.println(p1);
+		 * }
+		 */
 
 		// Close the database connection:
 		em.close();
