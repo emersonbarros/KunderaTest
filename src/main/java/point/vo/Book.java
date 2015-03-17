@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "Book", schema = "kunderaexamples@cassandra_pu")
 public class Book {
@@ -115,4 +117,10 @@ public class Book {
 		setTitle(title);
 		setReaders(readers);
 	}
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "Locale",  schema = "kunderaexamples@cassandra_pu")
 public class Locale {
@@ -66,4 +68,10 @@ public class Locale {
 		setLanguage(language);
 		setCountry(country);
 	}	
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 }

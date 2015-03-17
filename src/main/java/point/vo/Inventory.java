@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "inventory",  schema = "kunderaexamples@cassandra_pu")
 public class Inventory {
@@ -98,6 +100,11 @@ public class Inventory {
 	/*
 	 * Context - GETTERS AND SETTERS
 	 * */
+
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
 
 	
 }

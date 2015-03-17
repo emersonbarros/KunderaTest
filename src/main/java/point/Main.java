@@ -7,7 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import point.vo.Context;
 import point.vo.Item;
+import point.vo.ItemPrice;
+import point.vo.Mode;
 import point.vo.Product;
 import point.vo.ProductOption;
 import point.vo.ProductOptionValue;
@@ -17,7 +20,7 @@ public class Main {
 
 	private static EntityManager em;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cassandra_pu");
 		em = factory.createEntityManager();
@@ -43,8 +46,6 @@ public class Main {
 		ProductOptionValue optValue = new ProductOptionValue();
 		optValue.setIdProductOptionValue("1004");
 		optValue.setItem(item);
-		ProductOptionValuePrice optValuePrice = new ProductOptionValuePrice();
-		optValuePrice.setIdProductOptionValuePrice("1005");
 				
 		optValues.add(optValue);
 		po.setProductOptionValue(optValues);
@@ -53,6 +54,25 @@ public class Main {
 		p.setOptions(options);
 		
 		em.persist(p);
+
+		
+		ProductOptionValuePrice optValuePrice = new ProductOptionValuePrice();
+		optValuePrice.setIdProductOptionValuePrice("1005");
+		ItemPrice itemPrice = new ItemPrice();
+		Context context = new Context();
+		context.setIdContext("1006");
+		Mode mode = new Mode();
+		mode.setIdMode("1007");
+		mode.setName("Name");
+		context.setMode(mode);
+		itemPrice.setContext(context);
+		itemPrice.setCurrencyCode("R");
+		itemPrice.setIdItemPrice("1008");
+		itemPrice.setProduct(p);
+		itemPrice.setProductOptionValue(optValue);
+		itemPrice.setValue(1000);
+		optValuePrice.setItemPrice(itemPrice);
+		
 		em.persist(optValuePrice);
 
 		em.getTransaction().commit();
@@ -60,7 +80,7 @@ public class Main {
 		Product o = em.find(Product.class, "1000");
 		System.out.println(o);
 		
-		ProductOptionValuePrice povp = em.find(ProductOptionValuePrice.class, "1000");
+		ProductOptionValuePrice povp = em.find(ProductOptionValuePrice.class, "1005");
 		System.out.println(povp);
 
 

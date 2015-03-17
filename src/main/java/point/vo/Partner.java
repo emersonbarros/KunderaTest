@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "Partner",  schema = "kunderaexamples@cassandra_pu")
 public class Partner {
@@ -41,4 +43,10 @@ public class Partner {
 	public Partner (String name){
 		setName(name);
 	}	
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 }

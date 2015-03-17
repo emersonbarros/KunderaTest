@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "Mode", schema = "kunderaexamples@cassandra_pu")
 public class Mode {
@@ -46,6 +48,11 @@ public class Mode {
 	public Mode(String IdMode ,String name) throws Exception {
 		setName(name);
 		setIdMode(IdMode);
+	}
+
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
 	}
 
 }

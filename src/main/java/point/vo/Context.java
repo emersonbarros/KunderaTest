@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "Context",  schema = "kunderaexamples@cassandra_pu")
 public class Context {
@@ -46,5 +48,11 @@ public class Context {
 		super();
 		setMode(mode);
 	}
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 	
 }

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "ProductOptionValuePrice",  schema = "kunderaexamples@cassandra_pu")
 public class ProductOptionValuePrice{
@@ -100,4 +102,10 @@ public class ProductOptionValuePrice{
 	public void setValue(Integer value) {
 		this.itemPrice.setValue(value);
 	}*/
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 }

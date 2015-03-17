@@ -3,6 +3,8 @@ package point.vo;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.google.gson.Gson;
+
 @Embeddable
 public class Reader {
 
@@ -36,4 +38,10 @@ public class Reader {
 		setIdReader(idReader);
 		setName(nameReader);
 	}
+	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
+
 }
