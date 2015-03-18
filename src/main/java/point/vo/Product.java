@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -18,11 +17,11 @@ import com.google.gson.Gson;
 @Entity
 @Table(name = "Product", schema = "kunderaexamples@cassandra_pu")
 public class Product {
+	
 	@Id
 	private String idProduct;
 
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idProductOption")
 	private List<ProductOption> productOption;
 
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)

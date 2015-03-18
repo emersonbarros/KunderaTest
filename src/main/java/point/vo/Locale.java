@@ -8,25 +8,24 @@ import javax.persistence.Table;
 import com.google.gson.Gson;
 
 @Entity
-@Table(name = "Locale",  schema = "kunderaexamples@cassandra_pu")
+@Table(name = "Locale", schema = "kunderaexamples@cassandra_pu")
 public class Locale {
 
 	@Id
 	private String idLocale;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "language")
 	private String language;
-	
-	@Column(name = "country")	
+
+	@Column(name = "country")
 	private String country;
 
-	
 	/*
 	 * GETTERS AND SETTERS
-	 * */
+	 */
 	public String getIdLocale() {
 		return idLocale;
 	}
@@ -59,15 +58,15 @@ public class Locale {
 		this.country = country;
 	}
 
-	public Locale(){
+	public Locale() {
 	}
-	
-	public Locale(String name, String language, String country){
+
+	public Locale(String name, String language, String country) {
 		setName(name);
 		setLanguage(language);
 		setCountry(country);
-	}	
-	
+	}
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);

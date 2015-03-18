@@ -12,34 +12,34 @@ import javax.persistence.Table;
 import com.google.gson.Gson;
 
 @Entity
-@Table(name = "inventory",  schema = "kunderaexamples@cassandra_pu")
+@Table(name = "inventory", schema = "kunderaexamples@cassandra_pu")
 public class Inventory {
-	
+
 	@Id
 	private String idItem;
-	
+
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idContext")
 	private Context context;
-	
+
 	@Column(name = "factory_capacity")
 	private Integer factoryCapacity;
-	
+
 	@Column(name = "availability_date")
 	private String availabilityDate;
-	
+
 	@Column(name = "quantity")
 	private Integer quantity;
-	
+
 	@Column(name = "backorder_quantity")
 	private Integer backorderQuantity;
-	
+
 	@Column(name = "preorder_quantity")
 	private Integer preorderQuantity;
 
 	/*
 	 * Inventory - GETTER AND SETTERS
-	 * */
+	 */
 	public String getIdItem() {
 		return idItem;
 	}
@@ -47,7 +47,7 @@ public class Inventory {
 	public void setIdItem(String idItem) {
 		this.idItem = idItem;
 	}
-	
+
 	public Context getContext() {
 		return context;
 	}
@@ -95,15 +95,14 @@ public class Inventory {
 	public void setPreorderQuantity(Integer preorderQuantity) {
 		this.preorderQuantity = preorderQuantity;
 	}
-	
+
 	/*
 	 * Context - GETTERS AND SETTERS
-	 * */
+	 */
 
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);
 	}
 
-	
 }

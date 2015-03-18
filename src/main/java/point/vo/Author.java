@@ -41,7 +41,7 @@ public class Author {
 		setIdAuthor(idAuthor);
 		setName(name);
 	}
-	
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);

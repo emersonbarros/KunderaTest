@@ -1,7 +1,6 @@
 package point.vo;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -44,5 +43,4 @@ public class ProductOptionValue {
 	public String toString() {
 		return new Gson().toJson(this);
 	}
-
 }

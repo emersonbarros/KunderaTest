@@ -1,7 +1,6 @@
 package point.vo;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -12,17 +11,16 @@ import javax.persistence.Table;
 import com.google.gson.Gson;
 
 @Entity
-@Table(name = "Context",  schema = "kunderaexamples@cassandra_pu")
+@Table(name = "Context", schema = "kunderaexamples@cassandra_pu")
 public class Context {
-	
+
 	@Id
-	@Column(name = "idContext")
 	private String idContext;
-	
+
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idMode")
 	private Mode mode;
-	
+
 	public String getIdContext() {
 		return idContext;
 	}
@@ -38,21 +36,19 @@ public class Context {
 	public void setMode(Mode mode) {
 		this.mode = mode;
 	}
-	
-	
+
 	public Context() throws Exception {
 		super();
 	}
-	
+
 	public Context(Mode mode) throws Exception {
 		super();
 		setMode(mode);
 	}
-	
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);
 	}
 
-	
 }

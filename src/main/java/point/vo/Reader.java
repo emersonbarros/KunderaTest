@@ -38,7 +38,7 @@ public class Reader {
 		setIdReader(idReader);
 		setName(nameReader);
 	}
-	
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);
