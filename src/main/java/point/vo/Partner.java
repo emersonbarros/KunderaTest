@@ -8,19 +8,19 @@ import javax.persistence.Table;
 import com.google.gson.Gson;
 
 @Entity
-@Table(name = "Partner",  schema = "kunderaexamples@cassandra_pu")
+@Table(name = "Partner", schema = "kunderaexamples@cassandra_pu")
 public class Partner {
 
 	@Id
 	@Column(name = "idPartner")
 	private String idPartner;
-	
+
 	@Column(name = "name")
 	private String name;
 
 	/*
 	 * GETTERS AND SETTERS
-	 * */
+	 */
 	public String getIdPartner() {
 		return idPartner;
 	}
@@ -37,13 +37,13 @@ public class Partner {
 		this.name = name;
 	}
 
-	public Partner(){
+	public Partner() {
 	}
-	
-	public Partner (String name){
+
+	public Partner(String name) {
 		setName(name);
-	}	
-	
+	}
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);

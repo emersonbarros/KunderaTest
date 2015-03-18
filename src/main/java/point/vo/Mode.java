@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 public class Mode {
 
 	@Id
-	@Column(name = "idMode")
 	private String idMode;
 
 	@Column(name = "name")
@@ -34,7 +33,7 @@ public class Mode {
 	}
 
 	public void setName(String name) throws Exception {
-		
+
 		this.name = name;
 	}
 
@@ -44,8 +43,8 @@ public class Mode {
 	public Mode(String name) throws Exception {
 		setName(name);
 	}
-	
-	public Mode(String IdMode ,String name) throws Exception {
+
+	public Mode(String IdMode, String name) throws Exception {
 		setName(name);
 		setIdMode(IdMode);
 	}

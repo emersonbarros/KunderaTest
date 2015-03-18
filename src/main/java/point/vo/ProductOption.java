@@ -3,7 +3,6 @@ package point.vo;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,11 +16,9 @@ import com.google.gson.Gson;
 @Table(name = "ProductOption", schema = "kunderaexamples@cassandra_pu")
 public class ProductOption {
 	@Id
-	@Column(name = "idProductOption")
 	private String idProductOption;
 
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idProductOptionValue")
 	private List<ProductOptionValue> productOptionValue;
 
 	public String getIdProductOption() {

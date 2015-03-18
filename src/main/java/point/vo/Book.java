@@ -50,7 +50,7 @@ public class Book {
 		if (author == null) {
 			throw new Exception();
 		}
-		
+
 		this.author = author;
 	}
 
@@ -117,7 +117,7 @@ public class Book {
 		setTitle(title);
 		setReaders(readers);
 	}
-	
+
 	@Override
 	public String toString() {
 		return new Gson().toJson(this);

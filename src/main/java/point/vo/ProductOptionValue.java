@@ -1,7 +1,6 @@
 package point.vo;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -15,7 +14,6 @@ import com.google.gson.Gson;
 @Table(name = "ProductOptionValue", schema = "kunderaexamples@cassandra_pu")
 public class ProductOptionValue {
 	@Id
-	@Column(name = "idProductOptionValue")
 	private String idProductOptionValue;
 
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
@@ -45,5 +43,4 @@ public class ProductOptionValue {
 	public String toString() {
 		return new Gson().toJson(this);
 	}
-
 }

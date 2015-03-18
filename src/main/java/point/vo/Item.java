@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 @Table(name = "Item", schema = "kunderaexamples@cassandra_pu")
 public class Item {
 	@Id
-	@Column(name = "idItem")
 	private String idItem;
 
 	@Column(name = "short_description")
