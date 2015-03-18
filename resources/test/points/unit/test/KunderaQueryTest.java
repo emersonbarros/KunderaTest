@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,6 +25,7 @@ import point.vo.ProductOption;
 import point.vo.ProductOptionValue;
 import point.vo.ProductOptionValuePrice;
 
+import com.impetus.client.cassandra.common.CassandraConstants;
 import com.objectdb.o.SLV.T;
 
 public class KunderaQueryTest {
@@ -31,8 +34,11 @@ public class KunderaQueryTest {
 	@Before
 	public void setup() {
 
-		EntityManagerFactory factory = Persistence
-				.createEntityManagerFactory("cassandra_pu");
+		Map<String, String> propertyMap = new HashMap<String, String>();
+		propertyMap.put(CassandraConstants.CQL_VERSION,
+				CassandraConstants.CQL_VERSION_2_0);
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory(
+				"cassandra_pu", propertyMap);
 		em = factory.createEntityManager();
 	}
 
@@ -97,7 +103,6 @@ public class KunderaQueryTest {
 			itemPrice.setContext(context);
 			itemPrice.setCurrencyCode("R");
 			itemPrice.setIdItemPrice("1008");
-			itemPrice.setProduct(p);
 			itemPrice.setProductOptionValue(optValue);
 			itemPrice.setValue(1000);
 
