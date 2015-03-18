@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 public class Locale {
 
 	@Id
-	@Column(name = "idLocale")
 	private String idLocale;
 
 	@Column(name = "name")

@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 public class Inventory {
 
 	@Id
-	@Column(name = "idItem")
 	private String idItem;
 
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)

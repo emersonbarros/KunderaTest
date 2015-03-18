@@ -28,7 +28,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		Map<String, String> propertyMap = new HashMap<String, String>();
 		propertyMap.put(CassandraConstants.CQL_VERSION,
-				CassandraConstants.CQL_VERSION_3_0);
+				CassandraConstants.CQL_VERSION_2_0);
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory(
 				"cassandra_pu", propertyMap);
 		em = factory.createEntityManager();
