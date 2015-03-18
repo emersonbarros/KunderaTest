@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 public class Partner {
 
 	@Id
-	@Column(name = "idPartner")
 	private String idPartner;
 	
 	@Column(name = "name")

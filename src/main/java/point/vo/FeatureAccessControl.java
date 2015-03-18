@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 @Table(name = "FeatureAccessControl", schema = "motomakerV1_0@cassandra_pu_version1")
 public class FeatureAccessControl {
 	@Id
-	@Column(name = "id")
 	private String id;
 
 	@Column(name = "name")

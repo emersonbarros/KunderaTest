@@ -24,7 +24,6 @@ public class ProductOptionValuePrice{
 	 * */
 	
 	@Id
-	@Column(name = "idProductOptionValuePrice")
 	private String idProductOptionValuePrice;
 	
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)

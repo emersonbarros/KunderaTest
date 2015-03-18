@@ -5,7 +5,7 @@
       <name>cassandra</name>
       <connection>
         <properties>
-          <property name="cql.version" value="3.0.0"></property>
+          <property name="cql.version" value="2.0.0"></property>
         </properties>
       </connection>
       <schemas>

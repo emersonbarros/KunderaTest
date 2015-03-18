@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 public class Mode {
 
 	@Id
-	@Column(name = "idMode")
 	private String idMode;
 
 	@Column(name = "name")

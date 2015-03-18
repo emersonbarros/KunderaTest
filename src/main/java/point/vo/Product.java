@@ -1,6 +1,7 @@
 package point.vo;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +19,6 @@ import com.google.gson.Gson;
 @Table(name = "Product", schema = "kunderaexamples@cassandra_pu")
 public class Product {
 	@Id
-	@Column(name = "idProduct")
 	private String idProduct;
 
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
@@ -54,6 +54,7 @@ public class Product {
 	}
 
 	public Product() {
+		super();
 	}
 
 	@Override
