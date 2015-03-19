@@ -48,13 +48,8 @@ public class KunderaQueryTest {
 		try {
 
 			em.getTransaction().begin();
-
-			em.setProperty("cql.version", "2.0.0");
-
 			Product p = new Product();
-
 			Context context = new Context();
-
 			Item item = new Item();
 			ItemPrice itemPrice = new ItemPrice();
 
@@ -147,6 +142,11 @@ public class KunderaQueryTest {
 			for (Product p1 : results) {
 				System.out.println(p1);
 			}
+			
+			
+			for (Product p1 : findAll(Product.class)) {
+				System.out.println(p1);
+			}
 
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -154,5 +154,9 @@ public class KunderaQueryTest {
 			em.close();
 		}
 
+	}
+	public List<T> findAll(Class <?> clazz) {
+		return em.createQuery("select "
+				.concat(clazz.getSimpleName().substring(0,1)).getResultList();
 	}
 }
