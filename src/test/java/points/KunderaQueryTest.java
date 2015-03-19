@@ -142,11 +142,40 @@ public class KunderaQueryTest {
 			System.out.println("RESULT FIND_BY_ID: "+prd);
 
 			System.out.println("RESULT FLAT OBJECT: "+product);
+			
+			em.getTransaction().begin();
+			
+			prd.getItem().setImage("i.png");
+			mergeGroup(prd);
+			
+			em.getTransaction().commit();
+			
+			
+			
+			em.getTransaction().begin();
+			
+			prd = em.find(Product.class,"1000");
+			
+	
 
 			//findAll
 			printAll(Product.class);
-			
 			assertFindAll();
+			
+			em.getTransaction().commit();
+			
+			em.getTransaction().begin();
+			
+			prd = em.find(Product.class,"1000");
+			System.out.println("RESULT CHANGED FLAT OBJECT: "+prd);
+			
+			prd.getItem().setImage("i.png");
+			deleteGroup(prd);
+			
+			em.getTransaction().commit();
+			
+			assertTrue(prd==null);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,6 +196,7 @@ public class KunderaQueryTest {
 	}
 	
 	public void assertProduct(final Product pProduct) {
+		
 		System.out.println("Product assert init");
 		assertTrue(pProduct != null);
 		assertTrue(pProduct.getIdProduct().equals("1000"));
