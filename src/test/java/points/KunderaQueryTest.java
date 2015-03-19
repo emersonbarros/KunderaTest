@@ -175,7 +175,7 @@ public class KunderaQueryTest {
 		assertTrue(pProduct.getOptions()!=null);
 		assertTrue(pProduct.getOptions().size() == 1);
 		assertTrue(pProduct.getOptions().get(0).getProductOptionValue()!=null);
-		System.out.println("Product assert passsed");
+		System.out.println("Product assert passed");
 		
 	}
 	
