@@ -164,7 +164,7 @@ public class KunderaQueryTest {
 		Item item = populateItem();
 		ProductOptionValue productOptionValue = populateProductOptionValue(item);
 		Product product = populateProduct(productOptionValue, item);
-		ProductOptionValuePrice povp = populateProductOptionValuePrice(productOptionValue);
+		populateProductOptionValuePrice(productOptionValue);
 
 		em.getTransaction().commit();
 
@@ -187,7 +187,7 @@ public class KunderaQueryTest {
 		Item item = populateItem();
 		ProductOptionValue productOptionValue = populateProductOptionValue(item);
 		Product product = populateProduct(productOptionValue, item);
-		ProductOptionValuePrice povp = populateProductOptionValuePrice(productOptionValue);
+		populateProductOptionValuePrice(productOptionValue);
 
 		em.getTransaction().commit();
 		em.getTransaction().begin();
@@ -210,7 +210,8 @@ public class KunderaQueryTest {
 		Item item = populateItem();
 		ProductOptionValue productOptionValue = populateProductOptionValue(item);
 		Product product = populateProduct(productOptionValue, item);
-		ProductOptionValuePrice povp = populateProductOptionValuePrice(productOptionValue);
+		populateProductOptionValuePrice(productOptionValue);
+		
 		em.getTransaction().commit();
 
 		assertTrue(product != null);
