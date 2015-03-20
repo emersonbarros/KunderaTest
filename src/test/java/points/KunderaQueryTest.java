@@ -232,6 +232,10 @@ public class KunderaQueryTest {
 	public void assertProductFindAll() {
 
 		List<Object> products = findAll(Product.class);
+		
+		assertTrue(!products.isEmpty());
+		assertTrue(products!=null);
+		
 		for (Object obj : products) {
 			Product prd = (Product) obj;
 			System.out.println("Product choosen:" + prd);
@@ -276,17 +280,7 @@ public class KunderaQueryTest {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Object> findAll(final Class<?> clazz) {
-		return em
-				.createQuery(
-						"select "
-								.concat(clazz.getSimpleName().substring(0, 1))
-								.concat(" from ")
-								.concat(clazz
-										.getSimpleName()
-										.concat(" ")
-										.concat(clazz.getSimpleName()
-												.substring(0, 1))))
-				.getResultList();
+		return em.createQuery("select ".concat(clazz.getSimpleName().substring(0, 1)).concat(" from ").concat(clazz.getSimpleName().concat(" ").concat(clazz.getSimpleName().substring(0, 1)))).getResultList();
 	}
 
 	/**
