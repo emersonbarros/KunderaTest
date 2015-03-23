@@ -10,10 +10,10 @@
       </connection>
       <schemas>
         <schema>
-          <name>TestKeyspace@cassandra_pu</name>
+          <name>kunderaexamples@cassandra_pu</name>
           <properties>
             <property name="strategy.class" value="SimpleStrategy" />
-            <property name="replcation.factor" value="1" />
+            <property name="replication.factor" value="1" />
             <property name="durable.writes" value="true" />
             <property name="inverted.indexing.enabled" value="true" />
           </properties>

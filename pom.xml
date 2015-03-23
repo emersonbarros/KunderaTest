@@ -34,9 +34,9 @@
 			<version>2.2.5</version>
 		</dependency>
 		<dependency>
-			<groupId>com.impetus.kundera.client</groupId>
+			<groupId>com.impetus.client</groupId>
 			<artifactId>kundera-cassandra</artifactId>
-			<version>2.16</version>
+			<version>2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>

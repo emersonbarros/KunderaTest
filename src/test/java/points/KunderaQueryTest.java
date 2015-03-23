@@ -33,7 +33,7 @@ import com.impetus.client.cassandra.common.CassandraConstants;
 public class KunderaQueryTest {
 
 	private static EntityManager em;
-
+ 
 	@Before
 	public void setup() {
 
