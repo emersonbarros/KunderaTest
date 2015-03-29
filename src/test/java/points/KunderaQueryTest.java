@@ -1,18 +1,21 @@
 package points;
 
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import net.vidageek.mirror.dsl.Mirror;
+
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
 import point.vo.Context;
 import point.vo.Item;
 import point.vo.ItemPrice;
@@ -21,6 +24,7 @@ import point.vo.Product;
 import point.vo.ProductOption;
 import point.vo.ProductOptionValue;
 import point.vo.ProductOptionValuePrice;
+
 import com.impetus.client.cassandra.common.CassandraConstants;
 
 /**
@@ -89,7 +93,7 @@ public class KunderaQueryTest {
 
 		optValuePrice.setItemPrice(itemPrice);
 
-		persistGroup(optValuePrice);
+		em.persist(optValuePrice);
 
 		return optValuePrice;
 	}
@@ -116,7 +120,7 @@ public class KunderaQueryTest {
 		options.add(po);
 		p.setOptions(options);
 
-		persistGroup(p);
+		em.persist(p);
 
 		return p;
 	}
@@ -194,7 +198,7 @@ public class KunderaQueryTest {
 
 		product = em.find(Product.class, "1000");
 		product.getItem().setImage("i.png");
-		mergeGroup(product);
+		em.merge(product);
 
 		em.getTransaction().commit();
 
@@ -218,7 +222,7 @@ public class KunderaQueryTest {
 
 		em.getTransaction().begin();
 
-		deleteGroup(product);
+		em.remove(product);
 
 		em.getTransaction().commit();
 
@@ -289,64 +293,4 @@ public class KunderaQueryTest {
 												.substring(0, 1))))
 				.getResultList();
 	}
-
-	/**
-	 * Generic method to print all records
-	 * 
-	 * @param clazz
-	 *            - Generic class type
-	 */
-	public void printAll(final Class<?> clazz) {
-
-		Mirror m = new Mirror();
-
-		for (Object p1 : findAll(clazz)) {
-			System.out.println("Json: ".concat(String.valueOf(m.on(p1).invoke()
-					.method("toString").withoutArgs())));
-		}
-	}
-
-	/**
-	 * Multi update method
-	 * 
-	 * @param args
-	 *            - Entity classes
-	 */
-	public void mergeGroup(final Object... args) {
-
-		if (args.length == 0)
-			return;
-
-		for (Object obj : args) {
-			em.merge(obj);
-		}
-
-	}
-
-	public void persistGroup(final Object... args) {
-
-		if (args.length == 0)
-			return;
-
-		for (Object obj : args) {
-			em.persist(obj);
-		}
-	}
-
-	/**
-	 * Remove 1 or N entities
-	 * 
-	 * @param args
-	 */
-	public static void deleteGroup(final Object... args) {
-
-		if (args.length == 0)
-			return;
-
-		for (Object obj : args) {
-			em.remove(obj);
-		}
-
-	}
-
 }
